@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const shortid = require("shortid");
 const fs = require('fs/promises')
 const path = require('path')
+const dbLocation = path.resolve("./db.json");
 
 //shortid id generate - npm i shortid
 const app = express();
@@ -25,13 +26,28 @@ app.use(express.json());
 
 
 */
+
+//Find Player by id
+app.get('/:id',async(req, res) =>{
+    const id = req.params.id
+    const data = await fs.readFile(dbLocation);
+    const players = JSON.parse(data);
+    const player = players.find(item => item.id == id)
+    if(!player){
+        return res.status(404).json({message: 'Player Not Found'})
+    }
+    res.status(201).json(player)
+    
+})
+
+
+//Create Player..
 app.post("/", async(req, res) => {
   const player = {
     ...req.body,
     id: shortid.generate(),
   };
    //res.status(201).json(player)
-   const dbLocation = path.resolve("./db.json");
    const data = await fs.readFile(dbLocation)
    const players = JSON.parse(data)
    //console.log(players)
@@ -40,6 +56,16 @@ app.post("/", async(req, res) => {
    await fs.writeFile(dbLocation, JSON.stringify(players))
    res.status(201).json(player)
 });
+
+//Find Player
+app.get('/', async(req, res) => {
+    const data = await fs.readFile(dbLocation)//buffer kind of binary data
+    const players = JSON.parse(data)
+    res.status(201).json(players)
+})
+
+
+
 
 app.get("/health", (_req, res) => { 
   res.send("First API Create ");

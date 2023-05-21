@@ -10,3 +10,10 @@ Content-Type: application/json
     "country":"BD",
     "rank":2
 }
+
+
+###
+GET http://localhost:8080
+
+
+###
