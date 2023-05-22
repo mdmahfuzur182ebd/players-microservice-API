@@ -6,14 +6,22 @@ POST http://localhost:8080
 Content-Type: application/json
 
 {
-    "name":"Tamin",
+    "name":"Sakib",
     "country":"BD",
-    "rank":2
+    "rank":5
 }
 
 
 ###
 GET http://localhost:8080
+
+
+###
+
+GET  http://localhost:8080/sj16z8EoAi
+
+
+###
 
 
 ###
