@@ -1,1 +1,5 @@
-[{"name":"Masrafi","country":"BD","rank":1,"id":"zpoQF3Z8O"},{"name":"Tamin","country":"BD","rank":2,"id":"chJYbzGqH"},{"name":"Sakib","country":"BD","rank":1,"id":"sj16z8EoA"},{"name":"Arsaful","country":"BD","rank":5,"id":"p-8eHMaJ4"}]
+[
+  { "name": "Masrafi", "country": "BD", "rank": 1, "id": "zpoQF3Z8O" },
+  { "name": "Tamin", "country": "BD", "rank": 2, "id": "chJYbzGqH" },
+  { "name": "Arsaful", "country": "BD", "rank": 5, "id": "p-8eHMaJ4" }
+]
