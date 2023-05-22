@@ -18,10 +18,29 @@ GET http://localhost:8080
 
 ###
 
-GET  http://localhost:8080/sj16z8EoAi
+GET  http://localhost:8080/sj16z8EoA
 
 
 ###
+PATCH  http://localhost:8080/sj16z8EoA
+Content-Type: application/json
+
+{
+    "name":"Sakib Islam",
+    "rank":20
+}
+
+###
+
+PUT  http://localhost:8080/sj16z8EoA
+Content-Type: application/json
+
+{
+    "name":"Sakib",
+    "country":"BD",
+    "rank":1
+}
 
 
 ###
+DELETE  http://localhost:8080/

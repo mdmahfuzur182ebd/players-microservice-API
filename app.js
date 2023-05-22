@@ -27,6 +27,30 @@ app.use(express.json());
 
 
 */
+//update or create Player
+app.put("/:id", async (req, res) => {
+  const id = req.params.id;
+
+  const data = await fs.readFile(dbLocation);
+  const players = JSON.parse(data);
+
+  let player = players.find((item) => item.id == id);
+
+  if (!player) {
+     player = {
+       ...req.body,
+       id: shortid.generate(),
+     };
+    players.push(player);
+  } else {
+    player.name = req.body.name;
+    player.country = req.body.country;
+    player.rank = req.body.rank;
+  }
+
+  await fs.writeFile(dbLocation, JSON.stringify(players));
+  res.status(200).json(player);
+});
 
 //Update data single PATCH
 
@@ -49,10 +73,6 @@ app.patch("/:id", async (req, res) => {
   await fs.writeFile(dbLocation, JSON.stringify(players));
   res.status(200).json(player);
 });
-
-
-
-
 
 //Find Player by id
 app.get("/:id", async (req, res) => {
